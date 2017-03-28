@@ -26,7 +26,7 @@ func TestPutMessage(t *testing.T) {
 
 	msg := NewMessage(<-nsqd.idChan, []byte("test"))
 	topic.PutMessage(msg)
-
+	
 	outputMsg := <-channel1.memoryMsgChan
 	test.Equal(t, msg.ID, outputMsg.ID)
 	test.Equal(t, msg.Body, outputMsg.Body)
